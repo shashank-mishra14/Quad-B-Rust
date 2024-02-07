@@ -1,0 +1,12 @@
+fn shortest_word(input: &str) -> Option<&str> {
+    input.split_whitespace().min_by_key(|word| word.len())
+}
+
+fn main() {
+    let sentence = "string sample hello world.";
+    if let Some(shortest) = shortest_word(sentence) {
+        println!("The shortest word is: {}", shortest);
+    } else {
+        println!("No words found in the input string.");
+    }
+}
