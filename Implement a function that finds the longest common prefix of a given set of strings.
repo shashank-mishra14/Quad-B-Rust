@@ -1,0 +1,36 @@
+fn longest_common_prefix(strings: &[String]) -> String {
+    if strings.is_empty() {
+        return String::new();
+    }
+    
+    let mut common_prefix = strings[0].clone();
+    
+    for s in &strings[1..] {
+        while !s.starts_with(&common_prefix) {
+            common_prefix.pop();
+        }
+        if common_prefix.is_empty() {
+            break;
+        }
+    }
+    
+    common_prefix
+}
+
+fn main() {
+    let strings = vec![
+        String::from("flower"),
+        String::from("flow"),
+        String::from("flight"),
+    ];
+    let prefix = longest_common_prefix(&strings);
+    println!("Longest common prefix: {}", prefix);
+
+    let strings = vec![
+        String::from("dog"),
+        String::from("racecar"),
+        String::from("car"),
+    ];
+    let prefix = longest_common_prefix(&strings);
+    println!("Longest common prefix: {}", prefix);
+}
